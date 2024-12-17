@@ -1,8 +1,11 @@
 package thema1.grundlagen;
 
+import utils.IO;
+
 public class RechnerOO {
 	
 	public static void main(String[] args) {
+		String name = IO.promptAndReadString("Whats ur name");
 		additionUndAusgabe(23, 24);
 		substraktionUndAusgabe(2,5);
 		multiplizierenUndAusgeben(3, 7);
@@ -34,7 +37,6 @@ public class RechnerOO {
 			System.out.println("Division durch 0 ist nicht erlaubt");
 		}
 	
-		
 	}
 	
 }	

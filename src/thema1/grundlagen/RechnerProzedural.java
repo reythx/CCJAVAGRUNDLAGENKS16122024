@@ -1,6 +1,6 @@
 package thema1.grundlagen;
 
-public class RechnerProgrammSchmidt {
+public class RechnerProzedural {
 
 	public static void main(String[] args) {
 		
