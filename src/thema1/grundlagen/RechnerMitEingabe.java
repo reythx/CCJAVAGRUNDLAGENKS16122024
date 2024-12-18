@@ -6,18 +6,18 @@ public class RechnerMitEingabe {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("Gebe eine Zahl an: ");
-		int z1 = scanner.nextInt();
-		System.out.println("Gebe eine weitere Zahl an: ");
-		int z2 = scanner.nextInt();
+		System.out.println("Gebe eine Zahl an: ");			
+		int z1 = scanner.nextInt();							//Zahl eingeben
+		System.out.println("Gebe eine weitere Zahl an: "); 	
+		int z2 = scanner.nextInt();							//Zahl2 eingeben
 		
-		System.out.println("Möchtest du addieren? Y / N");
-		String answer = "k";
+		System.out.println("Möchtest du addieren? Y / N");	//Abfrage addition
+		String answer = "k";								//Set answer to non-answer
 		answer = scanner.next();
-			if(answer.equalsIgnoreCase("Y")) {
-			RechnerOO.additionUndAusgabe(z1, z2);
+			if(answer.equalsIgnoreCase("Y")) {				
+			RechnerOO.additionUndAusgabe(z1, z2);			//if Answer = Y, führe Methode additionUndAusgabe durch
 			return;
-			}else if(answer.equalsIgnoreCase("N")) {
+			}else if(answer.equalsIgnoreCase("N")) {						//if Answer = N, frage nach anderen Operatoren durch
 				System.out.println("Möchtest du substrahieren? Y / N");
 				answer = scanner.next();
 					}if(answer.equalsIgnoreCase("Y")){

@@ -11,7 +11,8 @@ public class Kreisberechnung {
 		double umfang = (2*Math.PI) * radius;
 		double fläche = Math.PI * (radius*radius);
 		System.out.println("Ihr Kreisumfang beträgt: " + Math.round(umfang*100.0)/100.0 + "cm und ihre Kreisfläche beträgt: " + Math.round(fläche*100.0)/100.0 + "cm²");
-
+		
+		scanner.close();
 	}
 
 }

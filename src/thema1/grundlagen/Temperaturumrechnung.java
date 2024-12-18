@@ -16,7 +16,7 @@ public class Temperaturumrechnung {
 			System.out.println("Bitte Temperatur in Fahrenheit angeben: ");
 			double fahr = scanner.nextDouble();
 			double umrechnungC = (fahr - 32) * 5/9;
-			System.out.println(fahr + "°C in Fahrenheit beträgt: " + Math.round(umrechnungC*100.0)/100.0 + "°F");
+			System.out.println(fahr + "°F in Celsius beträgt: " + Math.round(umrechnungC*100.0)/100.0 + "°F");
 		}
 	}
 }

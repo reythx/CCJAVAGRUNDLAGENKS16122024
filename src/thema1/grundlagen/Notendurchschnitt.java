@@ -13,9 +13,10 @@ public class Notendurchschnitt {
 
 		for(int x = 1; x <= numb; x++) {
 			System.out.println("Bitte geben Sie nacheinander ihre Note an: ");
-			average = (average + scanner.nextDouble()) / x;
+			average = average + scanner.nextDouble();
 		}
-	
-		System.out.println("Ihr Notendurchschnitt beträgt: " + average);
+		average /= numb;
+		System.out.println("Ihr Notendurchschnitt beträgt: " + String.format("%.2f", average));
+		scanner.close();
 	}
 }
