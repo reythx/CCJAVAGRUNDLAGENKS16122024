@@ -42,6 +42,17 @@ public class RechnerOO {
 		System.out.println("Modulo von " + z1 + " und " + z2 + " ergibt = " + String.format("%.2f", ergebnis));
 	}
 	
+	public static void wurzelzugUndAusgeben(double z1) {
+		double ergebnis = Math.sqrt(z1);
+		System.out.println("Die Wurzel von " + z1 + " ist: " + ergebnis);
+	}
+	
+	public static void quadrierenUndAusgeben(double z1) {
+		double ergebnis = z1*z1;
+		System.out.println("Das Quadrat von " + z1 + " beträgt: " + ergebnis);
+	}
+	
+	
 }	
 	
 
