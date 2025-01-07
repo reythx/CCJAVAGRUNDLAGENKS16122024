@@ -19,7 +19,7 @@ public class BiggestNumberIfElse {
 			System.out.println(n3 + " ist ihre größte Zahl!");
 		}
 		
-	
+	scanner.close();
 	}
 
 }

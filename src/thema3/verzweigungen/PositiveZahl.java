@@ -14,7 +14,7 @@ public class PositiveZahl {
 		}else {
 			System.out.println("Ihre Zahl ist ungerade!");
 		}
-
+scanner.close();
 	}
 
 }
