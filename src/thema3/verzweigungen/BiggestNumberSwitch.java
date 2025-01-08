@@ -1,6 +1,5 @@
 package thema3.verzweigungen;
 
-
 public class BiggestNumberSwitch {
 
 	public static void main(String[] args) {
@@ -10,7 +9,6 @@ public class BiggestNumberSwitch {
 		int n3 = 9;
 
 		int max = Math.max(n1, Math.max(n2, n3));
-		
 	switch(max) {
 	case 12:
 		System.out.println("Die größte Zahl ist: " + n1);

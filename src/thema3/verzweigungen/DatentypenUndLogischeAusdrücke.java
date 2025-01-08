@@ -18,7 +18,7 @@ public class DatentypenUndLogischeAusdrücke {
 	//c
 	// (y > 2)&&(x>6) für x = 5 und y =3,	false, da x=5 und bedingung x>6
 	//d
-	// (x+y>20)&&(y>2) für x=11 und y=1,	false, da y<2 und x+y <20
+	// (x+y>20)&&(y>2) für x=11 und y=1,	true, da y<2 und x+y <20
 	//e
 	// (4<6)&&(4>6)		false, da contradictory
 	//f
