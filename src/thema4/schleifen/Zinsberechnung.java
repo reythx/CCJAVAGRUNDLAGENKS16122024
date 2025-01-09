@@ -10,7 +10,7 @@ public class Zinsberechnung {
 		System.out.println("Zinssatz: ");
 		double zinsen = scanner.nextDouble();
 		System.out.println("Laufzeit in Jahren: ");
-		double laufzeit = scanner.nextDouble();
+		int laufzeit = scanner.nextInt();
 		
 		for(int i = 0; i<=laufzeit; i++) {
 			System.out.println("Jahr: "+i+ " | Kapitalstand: "+(Math.round(kapital*100)/100.0+" Euro"));
@@ -19,5 +19,4 @@ public class Zinsberechnung {
 		
 		scanner.close();
 	}
-
 }

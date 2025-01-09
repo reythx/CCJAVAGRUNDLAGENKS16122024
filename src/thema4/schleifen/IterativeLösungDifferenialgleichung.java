@@ -5,7 +5,7 @@ public class IterativeLösungDifferenialgleichung {
 	public static void main(String[] args) {
 		double t = 0; // zeit
 		double dt = 1.0; // 1 tag
-		double k = 0.05; // ansteckungsma0
+		double k = 0.05; // ansteckungsmaß
 		double xn = 0.01; // Anfangswert infizierte
 		double dx = 0;	
 		while (t < 100) {

@@ -5,8 +5,10 @@ import java.util.Scanner;
 public class Rentenberechnung {
 
 	public static void main(String[] args) {
-		// Rente > Anfangskapital x Zinssatz, denn sonst ist der Zins höher als die Rente, das ist der Grund warum Millionäre immer reicher werden, auch wenn sie nichts tun (:
-		
+		// Rente > Anfangskapital x Zinssatz, denn sonst ist der Zins höher als die
+		// Rente, das ist der Grund warum Millionäre immer reicher werden, auch wenn sie
+		// nichts tun (:
+
 		Scanner scanner = new Scanner(System.in);
 		System.out.println(
 				"Geben Sie ihr Startkapital, ihren Zinssatz und die jährlich abzuziehende Rente an: \nStartkapital: ");
@@ -19,7 +21,7 @@ public class Rentenberechnung {
 		do {
 			// Berechnung der Zinsen und neues Kapital
 			kapital = kapital + kapital * (zins * 0.01);
-			
+
 			// abbruch, wenn zinsen > rente
 			if (kapital * zins * 0.01 >= rente) {
 				System.out.println(

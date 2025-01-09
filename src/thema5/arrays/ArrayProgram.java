@@ -17,7 +17,7 @@ public class ArrayProgram {
 		}
 		// gleiche schleife, andere ausführung, in o werden die einzelnen Elemente von ages gespeichert, ausgegeben -> überschreiben
 		// geeignet für arrays, da o<ages, nicht <=
-		for(int o : ages) {
+		for(int o : ages) {					// foreach schleife
 			System.out.println(o);
 		}
 	}

@@ -4,19 +4,18 @@ public class WurzelziehenHalbieren {
 
 	public static void main(String[] args) {
 		
-		double z = 16;
-		int n = 20;
+		double z = 120;
+		int n = 4;
 		double l = 0;
 		double r = z;
-		double m = 0;
 		for(int i = 1; i<=n; i++) {
-			m = (l + r) / 2;
+			double m = (l + r) / 2;
 			if(m*m < z) {
 				l = m;
 			}else {
 				r = m;
 			}
-			System.out.println(i + l + r);
+			System.out.println("Iteration: "+ i + ", l: " + Math.round(r*100.0)/100.0 + ", Wurzel: " + Math.round(r*100.0)/100.0);
 		}
 		
 		
