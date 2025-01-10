@@ -1,24 +1,30 @@
 package thema6.zweidimensionaleArrays;
 
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class TicTacToe {
 	public static void main(String[] args) {
-
+		Scanner scanner = new Scanner(System.in);
 		String[][] b = initializeNewBoard();
-		String winCondition = checkWin(b);
+		String winCondition = null;
 		do {
 			printBoard(b);
-			player1Turn(b);
-			checkWin(b);
+			player1Turn(b, scanner);
+			winCondition = checkWin(b);
+			if (winCondition != null) { // chatGPT
+				break; // spiel beenden, wenn Spieler1 gewinnt, ohne dass spieler2 noch eine runde
+						// bekommt ChatGPT
+			}
 			printBoard(b);
-			player2Turn(b);
-			checkWin(b);
-			printBoard(b);
-		} while (winCondition != null);
-	}
+			player2Turn(b, scanner);
+			winCondition = checkWin(b);
 
+		} while (winCondition == null); // logischer fehler, ich hatte != null, chatgpt
+
+		printBoard(b);
+		System.out.println("***Herzlichen Glückwunsch!***\nSpieler " + winCondition + " hat gewonnen!");
+		scanner.close();
+	}
 
 	public static String[][] initializeNewBoard() {
 		String[][] board = new String[3][3];
@@ -40,35 +46,33 @@ public class TicTacToe {
 		}
 	}
 
-	public static String[][] player1Turn(String[][] board) {
-		Scanner scanner = new Scanner(System.in);
+	public static String[][] player1Turn(String[][] board, Scanner scanner) {
 		boolean noX = true;
 		while (noX == true) { // wiederhole, bis X gesetzt ist
-			System.out.println("Spieler 1, in welcher Zeile ein X setzen?");
+			System.out.println("Spieler X, in welcher Zeile ein X setzen?");
 			int player1row = scanner.nextInt();
-			System.out.print("Spieler 1, in welcher Spalte das X setzen?");
+			System.out.print("Spieler X, in welcher Spalte das X setzen?");
 			int player1column = scanner.nextInt();
-			if (board[player1row][player1column] != "X" || board[player1row][player1column] != "O") { // setze X, falls
-																										// noch nicht
-																										// belegt
+			if (board[player1row][player1column].equals(" ")) { // setze X, falls
+																// noch nicht
+																// belegt
 				board[player1row][player1column] = "X";
 				noX = false; // wenn X gesetzt wird, beende schleife
 			} else {
-				System.out.println("Das Feld ist bereits besetzt, bitte erneut setzen");
+				System.out.println("Das Feld ist bereits besetzt, bitte erneut setzen");	//ansonsten gebe text aus und wiederhole schleife
 			}
 		}
 		return board;
 	}
 
-	public static String[][] player2Turn(String[][] board) {
-		Scanner scanner = new Scanner(System.in);
+	public static String[][] player2Turn(String[][] board, Scanner scanner) {
 		boolean noX = true;
 		while (noX == true) { // wiederhole, bis O gesetzt ist
-			System.out.println("Spieler 2, in welcher Zeile ein O setzen?");
+			System.out.println("Spieler O, in welcher Zeile ein O setzen?");
 			int player1row = scanner.nextInt();
-			System.out.print("Spieler 1, in welcher Spalte das O setzen?");
+			System.out.print("Spieler O, in welcher Spalte das O setzen?");
 			int player1column = scanner.nextInt();
-			if (board[player1row][player1column] != "X" || board[player1row][player1column] != "O") { // setze O, falls
+			if (board[player1row][player1column].equals(" ")) { // setze O, falls
 																										// noch nicht
 																										// belegt
 				board[player1row][player1column] = "O";
@@ -84,27 +88,32 @@ public class TicTacToe {
 	public static String checkWin(String[][] board) {
 		// check if player1 won
 		if ((board[0][0] == "X" && board[0][1] == "X" && board[0][2] == "X")
-				|| (board[1][0] == "X" && board[1][1] == "X" && board[1][2] == "X")
-				|| (board[2][0] == "X" && board[2][1] == "X" && board[2][2] == "X")
-				|| (board[0][0] == "X" && board[1][0] == "X" && board[2][0] == "X")
-				|| (board[0][1] == "X" && board[1][1] == "X" && board[2][1] == "X")
-				|| (board[0][2] == "X" && board[2][1] == "X" && board[2][2] == "X")
-				|| (board[0][0] == "X" && board[1][1] == "X" && board[2][2] == "X")
-				|| (board[2][2] == "X" && board[2][1] == "X" && board[2][0] == "X")) {
+				|| (board[1][0].equals("X") && board[1][1].equals("X") && board[1][2].equals("X")) // ich hatte ==
+																									// ("X"), chatGPT
+																									// aht mich gelehrt,
+																									// immer .equals bei
+																									// strings in java
+																									// verwenden!
+				|| (board[2][0].equals("X") && board[2][1].equals("X") && board[2][2].equals("X"))
+				|| (board[0][0].equals("X") && board[1][0].equals("X") && board[2][0].equals("X"))
+				|| (board[0][1].equals("X") && board[1][1].equals("X") && board[2][1].equals("X"))
+				|| (board[0][2].equals("X") && board[2][1].equals("X") && board[2][2].equals("X"))
+				|| (board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X"))
+				|| (board[2][2].equals("X") && board[2][1].equals("X") && board[2][0].equals("X"))) {
 			return "X";
 		}
 		// check if player2 won
 		if ((board[0][0] == "O" && board[0][1] == "O" && board[0][2] == "O")
-				|| (board[1][0] == "O" && board[1][1] == "O" && board[1][2] == "O")
-				|| (board[2][0] == "O" && board[2][1] == "O" && board[2][2] == "O")
-				|| (board[0][0] == "O" && board[1][0] == "O" && board[2][0] == "O")
-				|| (board[0][1] == "O" && board[1][1] == "O" && board[2][1] == "O")
-				|| (board[0][2] == "O" && board[2][1] == "O" && board[2][2] == "O")
-				|| (board[0][0] == "O" && board[1][1] == "O" && board[2][2] == "O")
-				|| (board[2][2] == "O" && board[2][1] == "O" && board[2][0] == "O")) {
+				|| (board[1][0].equals("O") && board[1][1].equals("O") && board[1][2].equals("O"))
+				|| (board[2][0].equals("O") && board[2][1].equals("O") && board[2][2].equals("O"))
+				|| (board[0][0].equals("O") && board[1][0].equals("O") && board[2][0].equals("O"))
+				|| (board[0][1].equals("O") && board[1][1].equals("O") && board[2][1].equals("O"))
+				|| (board[0][2].equals("O") && board[2][1].equals("O") && board[2][2].equals("O"))
+				|| (board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O"))
+				|| (board[2][2].equals("O") && board[2][1].equals("O") && board[2][0].equals("O"))) {
 			return "O";
 		}
-		// return null of nobody won
+		// return null if nobody won
 		return null;
 	}
 }
