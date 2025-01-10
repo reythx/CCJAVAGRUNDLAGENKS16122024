@@ -13,7 +13,7 @@ public class SearchSwapDelete {
 		for (int i = 1; i < arr.length; i++) { // i=1, da max bereits arr[0]
 			if (arr[i] > max) {
 				max = arr[i];
-				count = 1; // zähler für vorkommen des Maximums
+				count = 1; // zähler für vorkommen des neuen Maximums
 			} else if (arr[i] == max) {
 				count++; // zähler für weitere Maximums
 			}
@@ -34,7 +34,7 @@ public class SearchSwapDelete {
 		System.out.println("Indizes der max-Werte: " + Arrays.toString(index));
 
 		// swap(arr, 3, 6);
-		delete(arr, 8);
+		delete(arr, 2);
 	}
 
 	public static void swap(int[] a, int i, int j) {
@@ -51,8 +51,7 @@ public class SearchSwapDelete {
 	}
 
 	public static void delete(int[] a, int w) {
-		// keep track of index
-		
+
 		// keep track of amount of values
 		int count = 0;
 		for (int i = 0; i < a.length; i++) {
@@ -62,33 +61,31 @@ public class SearchSwapDelete {
 		}
 		// new array with correct length
 		int[] fewer = new int[a.length - count];
-		int indexLess = 0;
-		
-		/* copy values that don't match into new array
+		int indexFewer = 0;
+
+		// copy values that don't match into new array
+		// for (int i = 0; i < a.length; i++) { if (a[i] != w) { fewer[indexLess] =
+		// a[i]; indexLess++; } }
+
+		// with system.arraycopy();
+		int start = 0; // startindex nächster abschnitt
 		for (int i = 0; i < a.length; i++) {
-			if (a[i] != w) {
-				fewer[indexLess] = a[i];
-				indexLess++;	
-			}
-		}*/
-		
-		
-		//with system.arraycopy();
-		int start = 0; //startindex nächster abschnitt
-		for(int i = 0; i<a.length; i++) {
-			if (a[i] == w) {			//wenn position i = w ist und
-				if(i > start) {			//wenn w nicht an position 0 ist
-					System.arraycopy(a, start, fewer, indexLess, i-start);	// dann kopiere abschnitt von Start bis i (ohne w)
-					indexLess += i-start;		//ziel-index aktualisieren
+			if (a[i] == w) { // wenn position i = w ist und
+				if (i > start) { // wenn w nicht an position 0 ist
+					System.arraycopy(a, start, fewer, indexFewer, i - start); // dann kopiere abschnitt von Start bis i
+																				// (ohne w)
+					indexFewer += i - start; // ziel-index aktualisieren
 				}
-				start = i+1;	//überspringe den wert i, da dieser w ist
+				start = i + 1; // überspringe den wert i, da dieser w ist
 			}
 		}
-		if(start < a.length) {
-			System.arraycopy(a, start, fewer, indexLess, a.length-start);	//kopiere restlichen abschnitt nach letztem w
+		if (start < a.length) {
+			System.arraycopy(a, start, fewer, indexFewer, a.length - start); // kopiere restlichen abschnitt nach
+																				// letztem
+																				// w
 
 		}
-				// return
+		// return
 		System.out.println("Original: " + Arrays.toString(a));
 		System.out.println("Neu: " + Arrays.toString(fewer));
 
