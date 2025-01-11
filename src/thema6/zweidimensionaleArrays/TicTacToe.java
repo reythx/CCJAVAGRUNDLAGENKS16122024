@@ -50,9 +50,9 @@ public class TicTacToe {
 		boolean noX = true;
 		while (noX == true) { // wiederhole, bis X gesetzt ist
 			System.out.println("Spieler X, in welcher Zeile ein X setzen?");
-			int player1row = scanner.nextInt();
+			int player1row = scanner.nextInt()-1;
 			System.out.print("Spieler X, in welcher Spalte das X setzen?");
-			int player1column = scanner.nextInt();
+			int player1column = scanner.nextInt()-1;
 			if (board[player1row][player1column].equals(" ")) { // setze X, falls
 																// noch nicht
 																// belegt
@@ -66,17 +66,17 @@ public class TicTacToe {
 	}
 
 	public static String[][] player2Turn(String[][] board, Scanner scanner) {
-		boolean noX = true;
-		while (noX == true) { // wiederhole, bis O gesetzt ist
+		boolean noO = true;
+		while (noO == true) { // wiederhole, bis O gesetzt ist
 			System.out.println("Spieler O, in welcher Zeile ein O setzen?");
-			int player1row = scanner.nextInt();
+			int player1row = scanner.nextInt()-1;
 			System.out.print("Spieler O, in welcher Spalte das O setzen?");
-			int player1column = scanner.nextInt();
+			int player1column = scanner.nextInt()-1;
 			if (board[player1row][player1column].equals(" ")) { // setze O, falls
 																										// noch nicht
 																										// belegt
 				board[player1row][player1column] = "O";
-				noX = false; // wenn O gesetzt wird, beende schleife
+				noO = false; // wenn O gesetzt wird, beende schleife
 			} else {
 				System.out.println("Das Feld ist bereits besetzt, bitte erneut setzen");
 			}
