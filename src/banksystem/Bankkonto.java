@@ -17,10 +17,6 @@ public class Bankkonto {
 		return kontostand;
 	}
 
-	protected void setKontostand(double kontostand) {
-		this.kontostand = kontostand;
-	}
-
 	public Kunde getKundeninhaber() {
 		return kundeninhaber;
 	}
@@ -28,7 +24,9 @@ public class Bankkonto {
 	public void setKundeninhaber(Kunde kundeninhaber) {
 		this.kundeninhaber = kundeninhaber;
 	}
+	
 
+	
 	Bankkonto() {
 
 		this.kontostand = 0;
@@ -42,26 +40,30 @@ public class Bankkonto {
 		this.kontonummer = kontonummer;
 		this.kundeninhaber = kundeninhaber;
 	}
+	Bankkonto(Kunde kundeninhaber){
+		this();
+		this.kontostand = 0;
+		this.kontonummer = kundeninhaber.kundenId;
+	}
 
 	public void einzahlen(double betrag) {
-		kontostand += betrag;
+		this.kontostand += betrag;
 	}
 
 	public void abheben(double betrag) {
-		int i = -1;
-		while (i == -1) {
-			if (betrag <= kontostand) {
-				kontostand -= betrag;
-				break;
-			} else {
-				System.err.println("Nicht genug Guthaben! Bitte wählen Sie einen anderen Betrag");
-			}
+
+		if (betrag <= kontostand) {
+			this.kontostand -= betrag;
+		} else {
+			System.err.println("Nicht genug Guthaben! Bitte wählen Sie einen anderen Betrag");
 		}
+
 	}
 
 	@Override
 	public String toString() {
-		return "Konto: " + kontonummer + ",\tInhaber: " + kundeninhaber.name + ",\t Kontostand: " + kontostand + " EUR";
+		return "Kontonummer: " + kontonummer + ", Inhaber: " + kundeninhaber.name + ", Kontostand: " + kontostand
+				+ " EUR";
 
 	}
 

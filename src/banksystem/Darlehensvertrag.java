@@ -1,6 +1,6 @@
 package banksystem;
 
-public class Darlehensvertrag {
+public class Darlehensvertrag implements Zinsberechnung {
 	public String vertragId;
 	public Kunde kreditnehmer;
 	public double kreditbetrag;
@@ -47,6 +47,7 @@ public class Darlehensvertrag {
 		this.zinssatz = 7;
 		this.laufzeit = 12;
 	}
+
 	public Darlehensvertrag(Kunde kreditnehmer) {
 		this.vertragId = "I" + (++count);
 		this.kreditbetrag = 0;
@@ -64,13 +65,14 @@ public class Darlehensvertrag {
 		this.laufzeit = laufzeit;
 	}
 
-	public void berechneMonatlicheRate() {
-		double monatlicherZins = zinssatz/(100*12);
-		double rate = (kreditbetrag*monatlicherZins)/(1-(Math.pow(1+monatlicherZins, -laufzeit)));
+	@Override
+	public void berechneZinsen() {
+		double monatlicherZins = zinssatz / (100 * 12);
+		double rate = (kreditbetrag * monatlicherZins) / (1 - (Math.pow(1 + monatlicherZins, -laufzeit)));
 		for (int i = 0; i < laufzeit; i++) {
 			kreditbetrag = kreditbetrag + kreditbetrag * (zinssatz / 100);
 		}
-		System.out.println("Monatliche Rate: " + Math.round(rate*100)/100.0);
+		System.out.println("Monatliche Rate: " + Math.round(rate * 100) / 100.0);
 	}
 
 	@Override

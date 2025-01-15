@@ -13,8 +13,7 @@ public class Girokonto extends Bankkonto{
 
 	@Override
 	public String toString() {
-		return "Girokonto "+ kontonummer + " [DispoLimit:" + dispoLimit + ", Kontostand:" + kontostand + ", Kundeninhaber:" + kundeninhaber.name
-				+ "]";
+		return "Kontonummer: "+ kontonummer + ", Kontostand: " + kontostand + " EUR, Dispolimit: " + dispoLimit + " EUR";
 	}
 
 	public double getDispoLimit() {

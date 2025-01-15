@@ -19,9 +19,15 @@ public class Kunde {
 		this.adresse = adresse;
 	}
 
+	public Kunde(String name) {
+		this.kundenId = "K" + (++idCounter);
+		this.name = name;
+		this.adresse = "Unknown";
+	}
+
 	@Override
 	public String toString() {
-		return "Kunde: KundenID = " + kundenId + ", Name: " + name + ",\t Adresse: " + adresse;
+		return "KundenID = " + kundenId + ", Name: " + name + ",\t Adresse: " + adresse;
 	}
 
 	public String getName() {
@@ -39,4 +45,5 @@ public class Kunde {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+
 }

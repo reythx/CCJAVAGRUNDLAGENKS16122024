@@ -1,22 +1,17 @@
 package banksystem;
 
-public class Sparkonto extends Bankkonto {
+public class Sparkonto extends Bankkonto implements Zinsberechnung{
 	private double zinssatz = 0.5/100;
 
-	
-	public void setSparkontostand(double kontostand) {
-		this.kontostand = kontostand;
-		System.out.println("kontostand gesetzt auf: "+this.kontostand);
-	}
-	public void zinsenBerechnen() {
-		System.out.println(kontostand * zinssatz);
+	@Override
+	public void berechneZinsen() {
+		System.out.println("Zinsen: " + kontostand * zinssatz + " EUR");
 		einzahlen(kontostand * zinssatz);
 	}
 
 	@Override
 	public String toString() {
-		return "Sparkonto: " + getKontonummer() + ", Kundeninhaber: " + kundeninhaber.name + ", Kontostand: " + kontostand
-				+ ", Zinssatz: " + zinssatz*100 +" %";
+		return super.toString() + ", Zinssatz: " + zinssatz*100 +" %" ;
 	}
 
 }
