@@ -69,24 +69,43 @@ public class Hauptprogramm {
 //		System.out.println("Kontostand: " + ((Sparkonto) konto).getKontostand() + " EUR");
 
 		// Kundenliste
-		Bank bank = new Bank("Sparkasse");
-		Kunde kunde = new Kunde("Mary Jane", "Clemens-August-Straße 59");
-		System.out.println(kunde);
-		bank.addKunden(kunde);
-		Kunde kunde1 = new Kunde("John", "Clemens-August-Platz 3");
-		bank.addKunden(kunde1);
-		Kunde kunde2 = new Kunde("Clemens", "Goethestraße 12");
-		bank.addKunden(kunde2);
-		bank.printKunden();
-		Bankkonto konto = new Bankkonto("123", 200, kunde1);
-		bank.addKonto(konto);
-		Bankkonto konto2 = new Bankkonto("321", 230, kunde2);
-		bank.addKonto(konto2);
-		Bankkonto konto3 = new Bankkonto("2345", 49999, kunde);
-		bank.addKonto(konto3);
-		bank.printKonten();
+//		Bank bank = new Bank("Sparkasse");
+//		Kunde kunde = new Kunde("Mary Jane", "Clemens-August-Straße 59");
+//		System.out.println(kunde);
+//		bank.addKunden(kunde);
+//		Kunde kunde1 = new Kunde("John", "Clemens-August-Platz 3");
+//		bank.addKunden(kunde1);
+//		Kunde kunde2 = new Kunde("Clemens", "Goethestraße 12");
+//		bank.addKunden(kunde2);
+//		bank.printKunden();
+//		Bankkonto konto = new Sparkonto(kunde1);
+//		bank.addKonto(konto);
+//		Bankkonto konto2 = new Girokonto("321", 230, kunde2);
+//		bank.addKonto(konto2);
+//		Bankkonto konto3 = new Girokonto("2345", 49999, kunde);
+//		bank.addKonto(konto3);
+//		bank.printKonten();
+//
+//		System.out.println(bank.searchKunde("K3"));
 
-		System.out.println(bank.searchKunde("K3"));
+		// Interfaces, abstract, vererbung
+		Bank bank = new Bank("Volksbank");
+		Kunde kunde1 = new Kunde("Clemens August", "Poppelsdorfer Platz 1");
+		Bankkonto konto = new Girokonto();
+		Girokonto konto2 = new Girokonto();
+		Girokonto konto3 = new Girokonto();
+		Sparkonto konto4 = new Sparkonto();
+		Sparkonto konto5 = new Sparkonto();
+		bank.addKonto(konto5);
+		bank.addKonto(konto);
+		bank.addKonto(konto4);
+		bank.addKonto(konto2);
+		bank.zeigeAlleKonten();
+		System.out.println(bank.getKonto("K2"));
+		bank.removeKonto("K3");
+		bank.zeigeAlleKonten();
+		
+
 	}
 
 }

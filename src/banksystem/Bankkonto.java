@@ -1,6 +1,6 @@
 package banksystem;
 
-public class Bankkonto {
+public abstract class Bankkonto {
 	protected String kontonummer;
 	protected double kontostand;
 	protected Kunde kundeninhaber;
@@ -24,6 +24,8 @@ public class Bankkonto {
 	public void setKundeninhaber(Kunde kundeninhaber) {
 		this.kundeninhaber = kundeninhaber;
 	}
+	
+	public abstract void abrechnung();
 	
 
 	

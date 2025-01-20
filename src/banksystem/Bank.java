@@ -1,10 +1,12 @@
 package banksystem;
 
+import java.util.ArrayList;
+
 public class Bank {
 	private static String name; // attribute die static sind als private initialisieren!
 	private static int anzahlKonten;
 	private Kunde[] kundenListe = new Kunde[100];
-	private Bankkonto[] konten = new Bankkonto[100];
+	private ArrayList<Bankkonto> konten = new ArrayList<>();
 
 	public Bank() {
 		this.name = "unbekannt";
@@ -52,6 +54,22 @@ public class Bank {
 		}
 	}
 
+	public Bankkonto getKonto(String kontonummer) {
+		for (int i = 0; i < konten.size(); i++) {
+			if (konten.get(i).getKontonummer().equals(kontonummer)) {
+				return konten.get(i);
+			}
+		}
+		return null;
+	}
+
+	public void zeigeAlleKonten() {
+		for (int i = 0; i < konten.size(); i++) {
+			System.out.println(konten.get(i));
+
+		}
+	}
+
 	public String searchKunde(String id) {
 		for (int i = 0; i < kundenListe.length; i++) {
 			if (kundenListe[i] != null && id.equals(kundenListe[i].kundenId)) {
@@ -62,18 +80,23 @@ public class Bank {
 	}
 
 	public void addKonto(Bankkonto konto) {
-		for (int i = 0; i < konten.length; i++) {
-			if (konten[i] == null) {
-				konten[i] = konto;
-				break;
+		konten.addLast(konto);
+		System.out.println("Konto " + konto.getKontonummer() + " hinzugefügt");
+	}
+
+	public void removeKonto(String kontonummer) {
+		for (int i = 0; i < konten.size(); i++) {
+			if (konten.get(i).getKontonummer().equals(kontonummer)) {
+				konten.remove(i);
 			}
 		}
+		System.out.println("Konto mit der Kontonummer " + kontonummer + " entfernt.");
 	}
 
 	public void printKonten() {
-		for (int i = 0; i < konten.length; i++) {
-			if (konten[i] != null) {
-				System.out.println("Bankkonto " + i + ": " + konten[i].toString());
+		for (int i = 0; i < konten.size(); i++) {
+			if (konten.get(i) != null) {
+				System.out.println("Bankkonto " + i + ": " + konten.get(i));
 			}
 		}
 	}
