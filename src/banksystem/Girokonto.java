@@ -15,6 +15,11 @@ public class Girokonto extends Bankkonto implements Ueberziehbar {
 		super(kontonummer, kontostand, kundeninhaber);
 	}
 
+	public Girokonto(String kontonummer, int kontostand, Kunde kundeninhaber, double dispoLimit) {
+		super(kontonummer, kontostand, kundeninhaber);
+		this.dispoLimit = dispoLimit;
+	}
+
 	public Girokonto(Kunde kundeninhaber) {
 		super(kundeninhaber);
 	}
@@ -42,7 +47,8 @@ public class Girokonto extends Bankkonto implements Ueberziehbar {
 		if (ueberziehungPruefen() == true) {
 			System.out.println("Gebühren für die Überziehung: " + (dispoLimit / 100) + " EUR");
 			this.kontostand -= (dispoLimit / 100);
-		}else System.out.println("Keine Gebühren");
+		} else
+			System.out.println("Keine Gebühren");
 	}
 
 	@Override

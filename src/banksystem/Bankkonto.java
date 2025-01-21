@@ -24,28 +24,37 @@ public abstract class Bankkonto {
 	public void setKundeninhaber(Kunde kundeninhaber) {
 		this.kundeninhaber = kundeninhaber;
 	}
-	
-	public abstract void abrechnung();
-	
 
-	
-	Bankkonto() {
+	public abstract void abrechnung();
+
+	public Bankkonto() {
 
 		this.kontostand = 0;
 		this.kundeninhaber = new Kunde();
 		this.kontonummer = kundeninhaber.kundenId;
 	}
 
-	Bankkonto(String kontonummer, double kontostand, Kunde kundeninhaber) {
+	public Bankkonto(String kontonummer, double kontostand, Kunde kundeninhaber) {
 		this();
 		this.kontostand = kontostand;
 		this.kontonummer = kontonummer;
 		this.kundeninhaber = kundeninhaber;
 	}
-	Bankkonto(Kunde kundeninhaber){
+
+	public Bankkonto(Kunde kundeninhaber) {
 		this();
 		this.kontostand = 0;
 		this.kontonummer = kundeninhaber.kundenId;
+	}
+
+	public Bankkonto(String kontonummer, double kontostand) {
+		// wenn nummer mit 238 beginnt, wird Präfix -> P (president)
+		// wenn mit 279 beginnt, Präfix -> PW (presidents wife)
+		if (kontonummer.startsWith("238")) {
+			this.kontonummer = "P" + kontonummer;
+		} else if (kontonummer.startsWith("279")) {
+			this.kontonummer = "PW" + kontonummer;
+		}
 	}
 
 	public void einzahlen(double betrag) {

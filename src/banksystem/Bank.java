@@ -80,7 +80,7 @@ public class Bank {
 	}
 
 	public void addKonto(Bankkonto konto) {
-		konten.addLast(konto);
+		konten.add(konto);
 		System.out.println("Konto " + konto.getKontonummer() + " hinzugefügt");
 	}
 
@@ -88,9 +88,11 @@ public class Bank {
 		for (int i = 0; i < konten.size(); i++) {
 			if (konten.get(i).getKontonummer().equals(kontonummer)) {
 				konten.remove(i);
+				System.out.println("Konto mit der Kontonummer " + kontonummer + " entfernt.");
+				break;
 			}
 		}
-		System.out.println("Konto mit der Kontonummer " + kontonummer + " entfernt.");
+
 	}
 
 	public void printKonten() {
