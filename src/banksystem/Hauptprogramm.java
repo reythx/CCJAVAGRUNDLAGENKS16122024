@@ -1,4 +1,6 @@
 package banksystem;
+import java.util.List;
+import java.util.Scanner;
 
 public class Hauptprogramm {
 
@@ -90,21 +92,38 @@ public class Hauptprogramm {
 
 		// Interfaces, abstract, vererbung
 		Bank bank = new Bank("Volksbank");
-		Kunde kunde1 = new Kunde("Clemens August", "Poppelsdorfer Platz 1");
-		Bankkonto konto = new Girokonto();
-		Girokonto konto2 = new Girokonto();
-		Girokonto konto3 = new Girokonto();
-		Sparkonto konto4 = new Sparkonto();
-		Sparkonto konto5 = new Sparkonto();
-		bank.addKonto(konto5);
-		bank.addKonto(konto);
-		bank.addKonto(konto4);
-		bank.addKonto(konto2);
-		bank.zeigeAlleKonten();
-		System.out.println(bank.getKonto("K2"));
-		bank.removeKonto("K3");
-		bank.zeigeAlleKonten();
+//		Kunde kunde1 = new Kunde("Clemens August", "Poppelsdorfer Platz 1");
+//		Bankkonto konto = new Girokonto();
+//		Girokonto konto2 = new Girokonto();
+//		Girokonto konto3 = new Girokonto();
+//		Sparkonto konto4 = new Sparkonto();
+//		Sparkonto konto5 = new Sparkonto();
+//		bank.addKonto(konto5);
+//		bank.addKonto(konto);
+//		bank.addKonto(konto4);
+//		bank.addKonto(konto2);
+//		bank.zeigeAlleKonten();
+//		System.out.println(bank.getKonto("K2"));
+//		bank.removeKonto("K3");
+//		bank.zeigeAlleKonten();
+
+		//KontoFabrik; random konten erstellen
+		List<Bankkonto> konten = KontoFabrik.generiereKonto(5);
+		//kontoinfos ausgeben
+		for(Bankkonto konto : konten) {
+			System.out.println(konto);
+		}
 		
+
+		Scanner scanner = new Scanner(System.in);
+		// One implementation without static menu method in MenuSystem
+		//	MenuSystem menuS = new MenuSystem();
+		// 	menuS.menu(scanner, bank);		
+		
+		//different implementation:
+		new MenuSystem();
+		MenuSystem.menu(scanner, bank);
+		scanner.close();
 
 	}
 

@@ -11,13 +11,17 @@ public class Girokonto extends Bankkonto implements Ueberziehbar {
 		}
 	}
 
-	public Girokonto(String kontonummer, int kontostand, Kunde kundeninhaber) {
+	public Girokonto(String kontonummer, double  kontostand, Kunde kundeninhaber) {
 		super(kontonummer, kontostand, kundeninhaber);
 	}
 
-	public Girokonto(String kontonummer, int kontostand, Kunde kundeninhaber, double dispoLimit) {
+	public Girokonto(String kontonummer, double  kontostand, Kunde kundeninhaber, double dispoLimit) {
 		super(kontonummer, kontostand, kundeninhaber);
 		this.dispoLimit = dispoLimit;
+	}
+	
+	public Girokonto(String kontonummer, double kontostand) {
+		super(kontonummer, kontostand);
 	}
 
 	public Girokonto(Kunde kundeninhaber) {

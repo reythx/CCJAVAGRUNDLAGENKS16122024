@@ -12,6 +12,10 @@ public class Sparkonto extends Bankkonto implements Zinsberechnung {
 	public Sparkonto(String kontonummer, double kontostand, Kunde kundeninhaber) {
 		super(kontonummer, kontostand, kundeninhaber);
 	}
+	
+	public Sparkonto(String kontonummer, double kontostand) {
+		super(kontonummer, kontostand);
+	}
 
 	public Sparkonto(Kunde kundeninhaber) {
 		super(kundeninhaber);

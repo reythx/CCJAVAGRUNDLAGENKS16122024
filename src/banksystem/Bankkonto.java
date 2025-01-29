@@ -50,6 +50,8 @@ public abstract class Bankkonto {
 	public Bankkonto(String kontonummer, double kontostand) {
 		// wenn nummer mit 238 beginnt, wird Präfix -> P (president)
 		// wenn mit 279 beginnt, Präfix -> PW (presidents wife)
+		this.kontonummer = kontonummer;
+		this.kontostand = kontostand;
 		if (kontonummer.startsWith("238")) {
 			this.kontonummer = "P" + kontonummer;
 		} else if (kontonummer.startsWith("279")) {
@@ -73,8 +75,7 @@ public abstract class Bankkonto {
 
 	@Override
 	public String toString() {
-		return "Kontonummer: " + kontonummer + ", Inhaber: " + kundeninhaber.name + ", Kontostand: " + kontostand
-				+ " EUR";
+		return "Kontonummer: " + kontonummer + ", Kontostand: " + kontostand + " EUR";
 
 	}
 
